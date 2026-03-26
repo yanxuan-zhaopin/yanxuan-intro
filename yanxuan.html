@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>网易严选 - 加入我们</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #d44d1e;
+      --orange-light: #f0884a;
+      --orange-dark: #b03c14;
+      --bg-dark: #1a1a1a;
+      --bg-light: #faf8f6;
+      --bg-white: #ffffff;
+      --text-primary: #222222;
+      --text-secondary: #666666;
+      --text-light: #999999;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+      color: var(--text-primary);
+      line-height: 1.6;
+      background: var(--bg-white);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 1px;
+    }
+
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 60px;
+      background: var(--bg-white);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -200px;
+      right: -160px;
+      width: 640px;
+      height: 640px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 77, 30, 0.07) 0%, transparent 70%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 77, 30, 0.05) 0%, transparent 70%);
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 1080px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-left { text-align: left; }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--orange);
+      background: rgba(212, 77, 30, 0.08);
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 14px 40px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--orange);
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .hero-btn:hover { background: var(--orange-dark); transform: translateY(-2px); }
+
+    .hero-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .hero-stat {
+      padding: 24px 20px;
+      border-radius: 14px;
+      background: var(--bg-light);
+      border: 1px solid #f0ebe6;
+    }
+
+    .hero-stat .hs-num {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1.2;
+    }
+
+    .hero-stat .hs-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .hero-stat.featured {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    .hero-stat.featured .hs-num { color: #fff; }
+    .hero-stat.featured .hs-label { color: rgba(255,255,255,0.8); }
+
+    /* Section Common */
+    section { padding: 100px 24px; }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 56px;
+    }
+
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    /* Identity: What Yanxuan IS */
+    .identity { background: var(--bg-light); }
+
+    .identity-statement {
+      text-align: center;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      color: var(--orange);
+      margin-bottom: 48px;
+      line-height: 1.5;
+    }
+
+    .identity-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .id-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px;
+      border-radius: 14px;
+      background: var(--bg-white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .id-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .id-icon.yes { background: var(--orange); }
+    .id-icon.no { background: #ccc; }
+
+    .id-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .id-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Honors */
+    .honors { background: var(--bg-dark); color: #fff; }
+    .honors .section-title { color: #fff; }
+    .honors .section-desc { color: #aaa; }
+
+    .honors-year {
+      text-align: center;
+      font-size: clamp(48px, 8vw, 72px);
+      font-weight: 900;
+      color: var(--orange);
+      opacity: 0.2;
+      margin-bottom: -18px;
+      letter-spacing: 4px;
+    }
+
+    .honors-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .honor-card {
+      padding: 28px 24px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+      transition: background 0.2s;
+    }
+
+    .honor-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .honor-card .honor-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--orange);
+      margin-bottom: 10px;
+    }
+
+    .honor-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .honor-card p {
+      font-size: 13px;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    .honor-highlight {
+      grid-column: span 2;
+      text-align: center;
+      padding: 36px 24px;
+      border: 1px solid rgba(212, 77, 30, 0.3);
+      background: rgba(212, 77, 30, 0.08);
+    }
+
+    .honor-highlight h4 {
+      font-size: 20px;
+      color: var(--orange-light);
+    }
+
+    /* Carousel */
+    .carousel-section {
+      padding: 100px 24px 80px;
+      background: var(--bg-light);
+      overflow: hidden;
+    }
+
+    .carousel-wrap {
+      position: relative;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-slide {
+      flex: 0 0 calc((100% - 72px) / 4);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-white);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s;
+    }
+
+    .carousel-slide:hover { transform: translateY(-4px); }
+
+    .slide-visual {
+      height: 220px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      background: #f9f7f5;
+    }
+
+    .slide-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s;
+    }
+
+    .carousel-slide:hover .slide-visual img {
+      transform: scale(1.06);
+    }
+
+    .slide-body {
+      padding: 18px 20px 22px;
+    }
+
+    .slide-tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--orange);
+      background: rgba(212, 77, 30, 0.08);
+      margin-bottom: 8px;
+    }
+
+    .slide-body h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+
+    .slide-body p {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .carousel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      background: var(--bg-white);
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--text-secondary);
+      display: grid;
+      place-items: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .carousel-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .carousel-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ccc;
+      transition: background 0.3s, width 0.3s;
+    }
+
+    .carousel-dots span.active {
+      width: 24px;
+      border-radius: 4px;
+      background: var(--orange);
+    }
+
+    @media (max-width: 768px) {
+      .carousel-slide { flex: 0 0 calc((100% - 24px) / 2); }
+    }
+
+    @media (max-width: 480px) {
+      .carousel-slide { flex: 0 0 100%; }
+    }
+
+    /* Focus Areas */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .focus-card {
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid #eee;
+      background: var(--bg-white);
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .focus-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .focus-card .icon-wrap {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      border-radius: 14px;
+      background: rgba(212, 77, 30, 0.08);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+    }
+
+    .focus-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .focus-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .focus-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .focus-tags span {
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--orange-dark);
+      background: rgba(212, 77, 30, 0.07);
+    }
+
+    /* Advantages */
+    .advantages { background: var(--bg-dark); color: #fff; }
+    .advantages .section-title { color: #fff; }
+    .advantages .section-desc { color: #aaa; }
+
+    .adv-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .adv-item {
+      padding: 32px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .adv-item .adv-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--orange-light);
+      margin-bottom: 10px;
+    }
+
+    .adv-item h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #eee;
+      margin-bottom: 6px;
+    }
+
+    .adv-item p {
+      font-size: 12px;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    /* Hiring */
+    .hiring { background: var(--bg-light); }
+
+    .hiring-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .hire-card {
+      padding: 32px 24px;
+      border-radius: 16px;
+      background: var(--bg-white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      border-top: 4px solid var(--orange);
+    }
+
+    .hire-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .hire-card .hire-goal {
+      font-size: 13px;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .hire-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Benefits */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .benefit-item {
+      display: flex;
+      gap: 16px;
+      padding: 28px;
+      border-radius: 14px;
+      background: var(--bg-white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .benefit-dot {
+      flex-shrink: 0;
+      width: 10px;
+      height: 10px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .benefit-item h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .benefit-item p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 100px 24px;
+      background:
+        radial-gradient(ellipse 100% 70% at 50% 100%, rgba(212, 77, 30, 0.06) 0%, transparent 60%),
+        var(--bg-white);
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+    }
+
+    footer {
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-light);
+      border-top: 1px solid #eee;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-left { text-align: center; }
+      .hero-sub { margin: 0 auto 32px; }
+      .hero-right { max-width: 400px; margin: 0 auto; }
+      .identity-grid { grid-template-columns: 1fr; }
+      .honors-grid { grid-template-columns: 1fr; }
+      .honor-highlight { grid-column: span 1; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .adv-grid { grid-template-columns: repeat(2, 1fr); }
+      .hiring-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">网易严选</div>
+    <ul class="nav-links">
+      <li><a href="#identity">品牌定位</a></li>
+      <li><a href="#honors">荣誉成绩</a></li>
+      <li><a href="#products">爆品展示</a></li>
+      <li><a href="#advantages">核心优势</a></li>
+      <li><a href="#hiring">热招岗位</a></li>
+      <li><a href="#benefits">员工福利</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <span class="hero-badge">网易旗下生活方式消费品牌</span>
+        <h1><span>网易严选</span><br/>让美好生活触手可及</h1>
+        <p class="hero-sub">成立于 2016 年，以简约、实用、舒适的产品设计，覆盖宠物生活、家庭清洁、居家日用等全品类，为新中产家庭和年轻一代消费者带来更美好的生活。</p>
+        <a class="hero-btn" href="#hiring">查看热招岗位</a>
+      </div>
+      <div class="hero-right">
+        <div class="hero-stat featured">
+          <div class="hs-num">11 个</div>
+          <div class="hs-label">亿级爆品系列</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-num">TOP 3</div>
+          <div class="hs-label">全球宠物品牌中国线上</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-num">No.1</div>
+          <div class="hs-label">除味香氛领导品牌</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-num">No.1</div>
+          <div class="hs-label">女性人体工学椅全国销量</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Identity -->
+  <section class="identity" id="identity">
+    <div class="container">
+      <h2 class="section-title fade-in">品牌定位</h2>
+      <p class="section-desc fade-in">网易旗下生活方式消费品牌，以产品创新和年轻化战略驱动增长</p>
+      <div class="identity-statement fade-in">"让美好生活触手可及"</div>
+      <div class="identity-grid">
+        <div class="id-card fade-in">
+          <div class="id-icon no">✕</div>
+          <div>
+            <h4>不是 GMV 广告平台型电商</h4>
+            <p>不同于天猫、拼多多、抖音等依赖 GMV 广告抽成的平台电商模式。</p>
+          </div>
+        </div>
+        <div class="id-card fade-in">
+          <div class="id-icon no">✕</div>
+          <div>
+            <h4>不是线上商超零售</h4>
+            <p>不同于京东、考拉等依赖规模效益赚取微薄毛利的自营电商。</p>
+          </div>
+        </div>
+        <div class="id-card fade-in">
+          <div class="id-icon no">✕</div>
+          <div>
+            <h4>不是线下商超零售</h4>
+            <p>不同于沃尔玛等传统线下零售渠道。</p>
+          </div>
+        </div>
+        <div class="id-card fade-in">
+          <div class="id-icon no">✕</div>
+          <div>
+            <h4>不是传统品牌</h4>
+            <p>不同于宝洁、农夫山泉等传统消费品牌。</p>
+          </div>
+        </div>
+        <div class="id-card fade-in">
+          <div class="id-icon yes">✓</div>
+          <div>
+            <h4>与电商平台是合作关系</h4>
+            <p>和淘宝、京东不是竞争关系，而是合作关系——严选在各大平台布局渠道。</p>
+          </div>
+        </div>
+        <div class="id-card fade-in">
+          <div class="id-icon yes">✓</div>
+          <div>
+            <h4>新一代互联网消费品牌</h4>
+            <p>以数据洞察消费需求，以供应链把控品质，以全渠道触达用户。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2025 Honors -->
+  <section class="honors" id="honors">
+    <div class="container">
+      <div class="honors-year fade-in">2025</div>
+      <h2 class="section-title fade-in">年度荣誉成绩</h2>
+      <p class="section-desc fade-in">持续夯实生活方式消费品牌定位，凭借产品创新和年轻化战略实现多赛道领跑</p>
+      <div class="honors-grid">
+        <div class="honor-card honor-highlight fade-in">
+          <div class="honor-tag">核心成果</div>
+          <h4>打造猫粮、犬粮、空气香氛等 11 个亿级爆品系列</h4>
+          <p>在宠物、家清、家居多个赛道实现领跑</p>
+        </div>
+        <div class="honor-card fade-in">
+          <div class="honor-tag">宠物赛道</div>
+          <h4>全球宠物品牌中国线上 TOP 3</h4>
+          <p>猫粮、犬粮双品类强势突围，品牌心智持续攀升</p>
+        </div>
+        <div class="honor-card fade-in">
+          <div class="honor-tag">家清赛道</div>
+          <h4>除味香氛领导品牌认证</h4>
+          <p>浴室除味香氛等三大产品荣获全国销量第一</p>
+        </div>
+        <div class="honor-card fade-in">
+          <div class="honor-tag">家居赛道</div>
+          <h4>女性人体工学椅全国销量第一</h4>
+          <p>精准洞察细分人群需求，以创新设计赢得市场认可</p>
+        </div>
+        <div class="honor-card fade-in">
+          <div class="honor-tag">品牌战略</div>
+          <h4>年轻化战略持续深化</h4>
+          <p>面向新中产家庭和年轻一代消费者，以简约、实用、舒适的产品理念打造生活好物</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Carousel -->
+  <section class="carousel-section" id="products">
+    <div class="carousel-wrap">
+      <h2 class="section-title fade-in">严选爆品</h2>
+      <p class="section-desc fade-in">亿级爆品系列，多赛道领跑市场</p>
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <div class="slide-visual"><img src="https://yanxuan-item.nosdn.127.net/2ab926b1ec4ae588863b12d7f85922b0.png" alt="全价猫粮" /></div>
+          <div class="slide-body">
+            <span class="slide-tag">宠物</span>
+            <h4>全价猫粮</h4>
+            <p>科学营养配比，真材实料，全球宠物品牌中国线上 TOP 3</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-visual"><img src="https://yanxuan-item.nosdn.127.net/7a3eb8ec24575d9b9a979931cd3e71c4.png" alt="全价犬粮" /></div>
+          <div class="slide-body">
+            <span class="slide-tag">宠物</span>
+            <h4>全价犬粮</h4>
+            <p>优质蛋白、均衡营养，伴爱宠健康成长</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-visual"><img src="https://yanxuan-item.nosdn.127.net/9e8f8e692f593f6a874e431cee321a72.png" alt="鲜蒸猫粮" /></div>
+          <div class="slide-body">
+            <span class="slide-tag">宠物</span>
+            <h4>鲜蒸猫粮</h4>
+            <p>鲜肉蒸制锁鲜，高蛋白低碳水，猫咪更爱吃</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-visual"><img src="https://yanxuan-item.nosdn.127.net/db4c62e3c2c97fd190240ed867ca7591.jpg" alt="0感空气香氛" /></div>
+          <div class="slide-body">
+            <span class="slide-tag">家清</span>
+            <h4>0 感空气香氛</h4>
+            <p>除味香氛领导品牌，浴室除味香氛全国销量第一</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-visual"><img src="https://yanxuan-item.nosdn.127.net/9e85bac78bfbb70c3105c82a1c6f133b.jpg" alt="浴室除味香氛" /></div>
+          <div class="slide-body">
+            <span class="slide-tag">家清</span>
+            <h4>浴室除味香氛</h4>
+            <p>三大产品全国销量第一，持久清新不刺鼻</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-visual"><img src="https://yanxuan-item.nosdn.127.net/ecd999bdff682db451db0680c2177823.jpg" alt="人体工学椅" /></div>
+          <div class="slide-body">
+            <span class="slide-tag">家居</span>
+            <h4>人体工学椅</h4>
+            <p>女性人体工学椅全国销量第一，精准贴合人体曲线</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-visual"><img src="https://yanxuan-item.nosdn.127.net/66870b46578bc0d6917240517b99eaa8.png" alt="任意桌" /></div>
+          <div class="slide-body">
+            <span class="slide-tag">居家</span>
+            <h4>任意桌</h4>
+            <p>灵活百搭，多场景适配，重新定义桌面自由</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="slide-visual"><img src="https://yanxuan-item.nosdn.127.net/148a94121fea8aa28cc74dcbf2e545a4.jpg" alt="A类抗菌四件套" /></div>
+          <div class="slide-body">
+            <span class="slide-tag">居家</span>
+            <h4>A 类抗菌四件套</h4>
+            <p>亲肤面料，抗菌防螨，给全家安心睡眠</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="carousel-btn" id="prevBtn">‹</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="nextBtn">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Focus Areas -->
+  <section id="focus">
+    <div class="container">
+      <h2 class="section-title fade-in">重点发力方向</h2>
+      <p class="section-desc fade-in">商品力 × 渠道力 × 营销力，三力协同驱动增长</p>
+      <div class="focus-grid">
+        <div class="focus-card fade-in">
+          <div class="icon-wrap">📦</div>
+          <h4>商品力</h4>
+          <p>品牌心智建设、品类营销深耕、S 级爆品突破，以商品为核心驱动力。</p>
+          <div class="focus-tags">
+            <span>宠物</span><span>家清</span><span>居家</span>
+          </div>
+        </div>
+        <div class="focus-card fade-in">
+          <div class="icon-wrap">🌐</div>
+          <h4>渠道力</h4>
+          <p>全渠道布局，覆盖自有 APP 与外部平台，大客户与经销商双轮驱动。</p>
+          <div class="focus-tags">
+            <span>严选 APP</span><span>京东</span><span>淘系</span><span>拼多多</span><span>抖快</span>
+          </div>
+        </div>
+        <div class="focus-card fade-in">
+          <div class="icon-wrap">📣</div>
+          <h4>营销力</h4>
+          <p>品牌传播、内容营销、整合营销多维度协同，打造心智爆品。</p>
+          <div class="focus-tags">
+            <span>品牌传播</span><span>内容营销</span><span>整合营销</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Advantages -->
+  <section class="advantages" id="advantages">
+    <div class="container">
+      <h2 class="section-title fade-in">核心优势</h2>
+      <p class="section-desc fade-in">五大核心竞争力构建严选护城河</p>
+      <div class="adv-grid fade-in">
+        <div class="adv-item">
+          <div class="adv-num">01</div>
+          <h4>消费者洞察</h4>
+          <p>敏捷的消费者需求洞察，数据驱动产品决策</p>
+        </div>
+        <div class="adv-item">
+          <div class="adv-num">02</div>
+          <h4>渠道布局</h4>
+          <p>全方位的零售渠道布局，自有 + 外部平台全覆盖</p>
+        </div>
+        <div class="adv-item">
+          <div class="adv-num">03</div>
+          <h4>供应链保障</h4>
+          <p>强大的供应链体系保障，从源头把控品质与成本</p>
+        </div>
+        <div class="adv-item">
+          <div class="adv-num">04</div>
+          <h4>可持续经营</h4>
+          <p>良性健康可持续的经营模式，追求长期价值</p>
+        </div>
+        <div class="adv-item">
+          <div class="adv-num">05</div>
+          <h4>多元人才</h4>
+          <p>多元化复合背景的人才队伍，跨界融合创新</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hiring Focus -->
+  <section class="hiring" id="hiring">
+    <div class="container">
+      <h2 class="section-title fade-in">重点招聘方向</h2>
+      <p class="section-desc fade-in">我们正在寻找具有品牌背景的行业精英</p>
+      <div class="hiring-grid">
+        <div class="hire-card fade-in">
+          <h4>运营专家</h4>
+          <div class="hire-goal">提升运营效率 · 构建全渠道能力</div>
+          <p>负责京东、淘系、抖快、大客户等渠道的深度运营，推动 GMV 增长与渠道效率提升。</p>
+        </div>
+        <div class="hire-card fade-in">
+          <h4>商品专家</h4>
+          <div class="hire-goal">聚焦重点类目 · 打造心智爆品</div>
+          <p>深耕宠物、家清、床品、食品、服配等核心品类，主导从选品、开发到上市全链路。</p>
+        </div>
+        <div class="hire-card fade-in">
+          <h4>营销专家</h4>
+          <div class="hire-goal">强化品牌心智 · 品类营销突破</div>
+          <p>负责品牌传播、内容营销、整合营销等，提升严选品牌影响力与用户心智份额。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits">
+    <div class="container">
+      <h2 class="section-title fade-in">员工福利</h2>
+      <p class="section-desc fade-in">我们希望每位同学都能享受好的工作与生活</p>
+      <div class="benefits-grid">
+        <div class="benefit-item fade-in">
+          <div class="benefit-dot"></div>
+          <div>
+            <h4>有竞争力的薪酬</h4>
+            <p>行业领先的薪资水平，年度调薪机制，丰厚的项目奖金与年终奖。</p>
+          </div>
+        </div>
+        <div class="benefit-item fade-in">
+          <div class="benefit-dot"></div>
+          <div>
+            <h4>六险一金 + 补充医疗</h4>
+            <p>入职即享六险一金，额外提供商业补充医疗保险，覆盖家属。</p>
+          </div>
+        </div>
+        <div class="benefit-item fade-in">
+          <div class="benefit-dot"></div>
+          <div>
+            <h4>免费三餐</h4>
+            <p>公司食堂提供免费三餐，品类丰富营养均衡。</p>
+          </div>
+        </div>
+        <div class="benefit-item fade-in">
+          <div class="benefit-dot"></div>
+          <div>
+            <h4>弹性工作</h4>
+            <p>弹性上下班时间，注重结果产出而非打卡考勤。</p>
+          </div>
+        </div>
+        <div class="benefit-item fade-in">
+          <div class="benefit-dot"></div>
+          <div>
+            <h4>学习成长</h4>
+            <p>内部技术分享、外部培训补贴、图书基金，助力职业发展。</p>
+          </div>
+        </div>
+        <div class="benefit-item fade-in">
+          <div class="benefit-dot"></div>
+          <div>
+            <h4>严选内购 + 网易福利</h4>
+            <p>严选商品员工专属折扣，网易全线产品福利（云音乐、有道等）。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2 class="fade-in">和我们一起，做有态度的好产品</h2>
+    <p class="fade-in">运营 · 商品 · 营销 · 供应链 · 技术，多岗位持续招聘中</p>
+    <a class="hero-btn fade-in" href="https://hr.163.com/product.html/yanxuan" target="_blank">投递简历</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 网易严选 · 网易集团旗下品牌 · 杭州市滨江区网商路 599 号</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+
+    // Carousel
+    (function () {
+      const track = document.getElementById("carouselTrack");
+      const dotsWrap = document.getElementById("carouselDots");
+      const slides = track.children;
+      const total = slides.length;
+      let page = 0;
+      let autoTimer;
+
+      function getVisible() {
+        const w = window.innerWidth;
+        if (w <= 480) return 1;
+        if (w <= 768) return 2;
+        return 4;
+      }
+
+      function getPages() {
+        return Math.ceil(total / getVisible());
+      }
+
+      function buildDots() {
+        dotsWrap.innerHTML = "";
+        const pages = getPages();
+        for (let i = 0; i < pages; i++) {
+          const dot = document.createElement("span");
+          if (i === page) dot.classList.add("active");
+          dot.addEventListener("click", () => goTo(i));
+          dotsWrap.appendChild(dot);
+        }
+      }
+
+      function goTo(p) {
+        const pages = getPages();
+        page = ((p % pages) + pages) % pages;
+        const vis = getVisible();
+        const gap = 24;
+        const slideW = (track.parentElement.clientWidth - gap * (vis - 1)) / vis;
+        track.style.transform = `translateX(-${page * vis * (slideW + gap)}px)`;
+        buildDots();
+        resetAuto();
+      }
+
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goTo(page + 1), 4000);
+      }
+
+      document.getElementById("prevBtn").addEventListener("click", () => goTo(page - 1));
+      document.getElementById("nextBtn").addEventListener("click", () => goTo(page + 1));
+
+      window.addEventListener("resize", () => { page = 0; goTo(0); });
+      buildDots();
+      resetAuto();
+    })();
+  </script>
+</body>
+</html>
